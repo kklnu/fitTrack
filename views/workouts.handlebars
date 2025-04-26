@@ -1,0 +1,58 @@
+
+
+<div class="card">
+  <h2 class="page-title">🏋️‍♂️ Your Workouts</h2>
+
+  <div class="workout-actions">
+    <a href="/dashboard" class="back-btn">← Back to Dashboard</a>
+    <button class="add-btn" id="openFormBtn">➕ Add Workout</button>
+  </div>
+
+  {{#if workouts.length}}
+    <table class="workout-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Duration (min)</th>
+          <th>Calories Burned</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each workouts}}
+          <tr>
+            <td>{{type}}</td>
+            <td>{{duration}}</td>
+            <td>{{caloriesBurned}}</td>
+            <td>{{date}}</td>
+            <td>
+              <button class="edit-btn" data-id="{{id}}">✏️ Edit</button>
+              <button class="delete-btn" data-id="{{id}}">🗑️ Delete</button>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No workouts logged yet. Let's get moving! 🏃‍♀️</p>
+  {{/if}}
+</div>
+
+<!-- Workout Modal -->
+<div class="modal" id="workoutModal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeFormBtn">&times;</span>
+    <h3 id="modalTitle">Add Workout</h3>
+    <form id="newWorkoutForm">
+      <input type="hidden" name="id" id="workoutId" />
+      <input type="text" name="type" placeholder="Workout Type (e.g., Cardio)" required />
+      <input type="number" name="duration" placeholder="Duration (minutes)" required />
+      <input type="number" name="caloriesBurned" placeholder="Calories Burned" />
+      <input type="date" name="date" required />
+      <button type="submit">Save Workout</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/workout.js"></script>

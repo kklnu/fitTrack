@@ -1,0 +1,55 @@
+<div class="card">
+  <h2 class="page-title">🎯 Your Goals</h2>
+
+  <div class="workout-actions">
+    <a href="/dashboard" class="back-btn">← Back to Dashboard</a>
+    <button class="add-btn" id="openGoalFormBtn">+ Add Goal</button>
+  </div>
+
+  {{#if goals.length}}
+    <table class="workout-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Target Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each goals}}
+          <tr>
+            <td>{{description}}</td>
+            <td>{{targetDate}}</td>
+            <td>{{#if isAchieved}}✅ Completed{{else}}❌ In Progress{{/if}}</td>
+            <td>
+              <button class="edit-goal-btn" data-id="{{id}}">Edit</button>
+              <button class="delete-goal-btn" data-id="{{id}}">Delete</button>
+              {{#unless isAchieved}}
+                <button class="mark-complete-btn" data-id="{{id}}">Mark Complete</button>
+              {{/unless}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No goals yet.</p>
+  {{/if}}
+
+  <!-- Modal for Add/Edit -->
+  <div class="modal" id="goalModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeGoalFormBtn">&times;</span>
+      <h3 id="goalModalTitle">New Goal</h3>
+      <form id="goalForm">
+        <input type="hidden" name="id" id="goalId" />
+        <input type="text" name="description" placeholder="Goal description" required />
+        <input type="date" name="targetDate" required />
+        <button type="submit">Save Goal</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/goal.js"></script>

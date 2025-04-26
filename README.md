@@ -84,14 +84,3 @@ node server.js
 ## 👩‍💻 Made by
 
 **Kiranpreet ** – Final Project for Full-Stack Web Development
-
-- **Back-end**: Node.js, Express.js, Sequelize, MySQL
-- **Front-end**: HTML, CSS, JavaScript, Handlebars.js
-- **Authentication**: express-session, bcrypt
-- **ORM**: Sequelize
-- **Hosting**: Render (deployment)
-
----
-
-## 📁 Folder Structure (MVC)
-
